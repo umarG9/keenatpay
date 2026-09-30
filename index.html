@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>KeenatPay - Call 7012869066</title>
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#0a1a4a">
+<script src="https://js.paystack.co/v1/inline.js"></script>
+<style>
+*{box-sizing:border-box;font-family:system-ui,sans-serif;margin:0;padding:0}
+body{background:#eef2ff}
+.header{background:#0a1a4a;color:#fff;padding:16px;text-align:center;position:sticky;top:0;z-index:99}
+.card{background:#fff;margin:12px;padding:16px;border-radius:16px;box-shadow:0 2px 8px rgba(0,0,0,.08)}
+input,select,button{width:100%;padding:13px;margin:7px 0;border-radius:10px;border:1px solid #ddd;font-size:15px}
+button{background:#0a1a4a;color:#fff;font-weight:bold}
+.wallet{background:linear-gradient(135deg,#0a1a4a,#2a5bd7);color:#fff}
+.kyc{background:#fff3cd;border:2px solid #ffc107}
+.conv{background:linear-gradient(135deg,#00c853,#00ff88);color:#000}
+.nepa{background:#e0f7fa;border:2px solid #00acc1}
+.hidden{display:none}
+.badge{background:green;color:#fff;padding:3px 10px;border-radius:12px;font-size:12px}
+.badge-red{background:red;color:#fff;padding:3px 10px;border-radius:12px;font-size:12px}
+.small{font-size:12px;color:#555}
+</style>
+</head>
+<body>
+<div class="header">
+<h2>KeenatPay</h2>
+<small>Call KeenatPay 7012869066 | Niger 🇳🇪 ↔ Nigeria 🇳🇬</small>
+</div>
+
+<div id="login" class="card">
+<h3>Barka da zuwa KeenatPay</h3>
+<input id="ph" placeholder="Phone 07012869066">
+<input id="emailLogin" placeholder="Email">
+<button onclick="login()">Shiga KeenatPay</button>
+<p class="small" style="text-align:center;margin-top:8px">Owner: Umar Hadi Gwani - 7012869066</p>
+</div>
+
+<div id="app" class="hidden">
+<div class="card wallet">
+<small>WALLET</small>
+<h2 id="bCFA">0 CFA</h2>
+<h2 id="bNGN">₦0</h2>
+<p id="uph"></p>
+<div id="kycStatus">KYC: <span class="badge-red">NOT VERIFIED</span></div>
+<button style="background:#00ff88;color:#000" onclick="fund()">Fund via Paystack</button>
+<button style="background:#fff;color:#0a1a4a" onclick="alert('Call KeenatPay 7012869066 for manual funding')">Manual Fund - Call 7012869066</button>
+</div>
+
+<div class="card kyc">
+<h3>🔐 KYC - BVN + NIN</h3>
+<input id="fullName" placeholder="Full Name">
+<input id="bvn" placeholder="BVN 11 digits" maxlength="11">
+<input id="nin" placeholder="NIN 11 digits" maxlength="11">
+<input id="dob" type="date">
+<button style="background:#ffc107;color:#000" onclick="verifyKYC()">Verify KYC</button>
+</div>
+
+<div class="card conv">
+<h3>💱 CFA ↔ NGN - 5% Fee</h3>
+<small>1 NGN = 2.5 CFA</small>
+<select id="fC" onchange="calc()"><option value="CFA">From CFA</option><option value="NGN">From NGN</option></select>
+<input id="fA" type="number" placeholder="Amount" oninput="calc()">
+<select id="tC" onchange="calc()"><option value="NGN">To NGN</option><option value="CFA">To CFA</option></select>
+<input id="tA" readonly style="background:#e8f5e9;font-weight:bold" placeholder="You get">
+<button style="background:#000;color:#00ff88" onclick="convert()">Convert</button>
+</div>
+
+<div class="card nepa">
+<h3>💡 NEPA Bill</h3>
+<select id="disco"><option>KEDCO - Kano</option><option>AEDC - Abuja</option><option>IKEDC - Ikeja</option><option>EKEDC - Eko</option><option>NIGELEC - Niger</option></select>
+<input id="meterNo" placeholder="Meter Number">
+<input id="meterAmt" type="number" placeholder="Amount">
+<button onclick="payNEPA()">Pay NEPA</button>
+</div>
+
+<div class="card">
+<h3>📱 Airtime & Data</h3>
+<select id="net"><option>MTN Nigeria</option><option>GLO Nigeria</option><option>AIRTEL Nigeria</option><option>9MOBILE Nigeria</option><option>Airtel Niger</option><option>Moov Niger</option><option>Orange Niger</option></select>
+<select id="serviceType"><option>Airtime</option><option>Data</option></select>
+<input id="phoneRecharge" placeholder="Phone Number">
+<input id="amt" type="number" placeholder="Amount">
+<button onclick="buy()">Buy Airtime/Data</button>
+</div>
+
+<div class="card">
+<h3>📜 History</h3>
+<div id="hist">No transaction</div>
+<button onclick="clearData()" style="background:#dc3545;margin-top:10px">Logout / Clear</button>
+</div>
+
+<div class="card" style="text-align:center"><small>KeenatPay © 2026 - Call KeenatPay 7012869066<br>Umar Hadi Gwani</small></div>
+</div>
+
+<script>
+const PAYSTACK_KEY='sk_live_YOUR_KEY_HERE';
+const RATE=2.5;
+let balC=0,balN=0,hist=[],kycDone=false,userEmail='';
+function login(){
+let p=document.getElementById('ph').value,e=document.getElementById('emailLogin').value;
+if(p.length<8) return alert('Enter phone'); if(!e.includes('@')) return alert('Enter email');
+userEmail=e; document.getElementById('login').classList.add('hidden');document.getElementById('app').classList.remove('hidden');document.getElementById('uph').innerText=p+' | '+e;
+let saved=localStorage.getItem('kyc_'+p); if(saved){kycDone=true;document.getElementById('kycStatus').innerHTML='KYC: <span class=badge>VERIFIED ✅</span>';}
+}
+function upd(){document.getElementById('bCFA').innerText=balC.toLocaleString()+' CFA';document.getElementById('bNGN').innerText='₦'+balN.toLocaleString();}
+function fund(){
+let amt=parseInt(prompt('Amount NGN?')); if(!amt) return;
+if(PAYSTACK_KEY.includes('YOUR_KEY')){balN+=amt;upd();hist.unshift('Fund ₦'+amt+' - Manual - Call 7012869066');document.getElementById('hist').innerHTML=hist.map(x=>`<div style="padding:6px;border-bottom:1px solid #eee">${x}</div>`).join('');return alert('Demo Fund ₦'+amt+' added! Add Paystack key for real payment');}
+let h=PaystackPop.setup({key:PAYSTACK_KEY,email:userEmail,amount:amt*100,currency:'NGN',ref:'KEENAT_'+Date.now(),callback:function(r){balN+=amt;upd();hist.unshift('Fund ₦'+amt+' - Ref:'+r.reference);document.getElementById('hist').innerHTML=hist.map(x=>`<div style="padding:6px;border-bottom:1px solid #eee">${x}</div>`).join('');alert('Success ₦'+amt);}});h.openIframe();
+}
+function verifyKYC(){
+let b=document.getElementById('bvn').value,n=document.getElementById('nin').value,name=document.getElementById('fullName').value;
+if(b.length!=11||n.length!=11) return alert('BVN/NIN 11 digits'); if(name.length<5) return alert('Full name');
+localStorage.setItem('kyc_'+document.getElementById('ph').value,JSON.stringify({bvn:b,nin:n,name:name}));kycDone=true;
+document.getElementById('kycStatus').innerHTML='KYC: <span class=badge>VERIFIED ✅ - '+name+'</span>';alert('KYC Verified! '+name);
+}
+function calc(){
+let f=document.getElementById('fC').value,t=document.getElementById('tC').value,am=parseFloat(document.getElementById('fA').value)||0,r=0;
+if(f=='CFA'&&t=='NGN') r=am/RATE; if(f=='NGN'&&t=='CFA') r=am*RATE; if(f==t) r=am; r=r*0.95; document.getElementById('tA').value=r?r.toFixed(2):'';
+}
+function convert(){
+let f=document.getElementById('fC').value,am=parseFloat(document.getElementById('fA').value)||0,to=parseFloat(document.getElementById('tA').value)||0;
+if(!am) return alert('Amount'); if(!kycDone&&am>10000) return alert('KYC required >10k');
+if(f=='CFA'&&balC<am) return alert('CFA low - Call 7012869066 to fund'); if(f=='NGN'&&balN<am) return alert('NGN low');
+if(f=='CFA'){balC-=am;balN+=to;}else{balN-=am;balC+=to;}upd();let m=`Convert ${am} ${f} to ${to.toFixed(2)} ${document.getElementById('tC').value}`;hist.unshift(m);document.getElementById('hist').innerHTML=hist.map(x=>`<div style="padding:6px;border-bottom:1px solid #eee">${x}</div>`).join('');alert(m);
+}
+function payNEPA(){
+if(!kycDone) return alert('KYC Required!'); let meter=document.getElementById('meterNo').value,amt=document.getElementById('meterAmt').value,disco=document.getElementById('disco').value;
+if(!meter||!amt) return alert('Meter & Amount'); let token=Math.floor(Math.random()*1e20); let m=`NEPA ${disco} Meter ${meter} ₦${amt} Token:${token}`;hist.unshift(m);document.getElementById('hist').innerHTML=hist.map(x=>`<div style="padding:6px;border-bottom:1px solid #eee">${x}</div>`).join('');alert(m);
+}
+function buy(){
+let net=document.getElementById('net').value,ph=document.getElementById('phoneRecharge').value,amt=document.getElementById('amt').value;
+if(!ph||!amt) return alert('Phone & Amount'); let m=`${net} ${amt} to ${ph} - SUCCESS`;hist.unshift(m);document.getElementById('hist').innerHTML=hist.map(x=>`<div style="padding:6px;border-bottom:1px solid #eee">${x}</div>`).join('');alert(m);
+}
+function clearData(){if(confirm('Clear?')){localStorage.clear();location.reload();}}
+</script>
+</body>
+</html>
