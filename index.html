@@ -1,45 +1,161 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ha">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>KeenatPay by Baba - Call 7012869066</title>
-<meta name="theme-color" content="#0a1a4a">
-<link rel="manifest" href="./manifest.json">
-<style>*{box-sizing:border-box;font-family:system-ui,sans-serif;margin:0;padding:0}body{background:#eef2ff}.header{background:#0a1a4a;color:#fff;padding:16px;text-align:center}.card{background:#fff;margin:12px;padding:16px;border-radius:16px;box-shadow:0 2px 8px rgba(0,0,0,.08)}input,select,button{width:100%;padding:14px;margin:8px 0;border-radius:10px;border:1px solid #ddd;font-size:16px}button{background:#0a1a4a;color:#fff;font-weight:bold}.pin-input{font-size:28px;text-align:center;letter-spacing:10px;font-weight:bold;border:2px solid #0a1a4a;background:#f0f7ff}.hidden{display:none}.face-box{position:relative;max-width:320px;margin:10px auto;background:#000;border-radius:16px;overflow:hidden}#video{width:100%;height:260px;object-fit:cover}.face-guide{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:180px;height:220px;border:3px dashed #00ff88;border-radius:50%}.secure{background:#e8f5e9;border-left:4px solid #00c853;padding:8px;margin:8px 0;font-size:12px}.small{font-size:12px;color:#555;text-align:center}</style>
-<script>
-if ('serviceWorker' in navigator) {
-  window.addEventListener('load', () => {
-    navigator.serviceWorker.register('./service-worker.js')
-      .then(() => console.log('KeenatPay by Baba SW OK ✅'))
-      .catch(e => console.log('SW fail', e));
-  });
-}
-</script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>KeenatPay Super by Baba</title>
+<style>
+*{box-sizing:border-box;font-family:system-ui,sans-serif;margin:0;padding:0}
+body{background:#f0f4ff;min-height:100vh}
+.h{background:#0a1a4a;color:#fff;padding:14px;text-align:center;position:sticky;top:0;z-index:10}
+.c{background:#fff;margin:8px;padding:14px;border-radius:12px;box-shadow:0 2px 8px rgba(0,0,0,.1)}
+input,select,button{width:100%;padding:13px;margin:6px 0;border-radius:10px;border:1px solid #ddd;font-size:15px}
+button{background:#0a1a4a;color:#fff;font-weight:bold;cursor:pointer}
+.tabs{display:flex;gap:5px;overflow:auto;padding:8px;background:#fff;margin:0 8px;border-radius:12px}
+.tab{padding:9px 14px;background:#e8eaf0;border-radius:20px;white-space:nowrap;font-weight:bold;font-size:13px;cursor:pointer}
+.tab.active{background:#0a1a4a;color:#fff}
+.hidden{display:none!important}
+.bal{background:linear-gradient(135deg,#0a1a4a,#3a6bff);color:#fff;text-align:center}
+.pin{font-size:28px;text-align:center;letter-spacing:10px;border:2px solid #0a1a4a;background:#f0f7ff}
+#vd{width:100%;height:220px;object-fit:cover;background:#000;border-radius:12px}
+.conv{background:#e8f5e9;border:2px solid #00c853}
+.ok{color:#00c853;font-weight:bold}
+.modal{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.85);z-index:99;display:flex;align-items:center;justify-content:center}
+</style>
 </head>
 <body>
-<div class="header"><h2>KeenatPay by Baba</h2><small>Call 7012869066 | OTP + Face + PIN | Niger ↔ Nigeria</small></div>
-<div id="login" class="card"><h3 style="text-align:center">KeenatPay by Baba - Register</h3><div class="secure">✅ COMPLETE - Baba Edition - OTP → Face → PIN</div>
-<div id="step1"><input id="ph" value="07012869066" type="tel"><button onclick="sendOtp()">Tura OTP 📲</button></div>
-<div id="step2" class="hidden"><p style="text-align:center"><span id="otpDemo" style="background:#00ff88;padding:6px 14px;border-radius:8px;font-weight:bold;font-size:20px"></span></p><input id="otpInput" maxlength="6" style="text-align:center;font-size:24px;letter-spacing:8px"><button onclick="verifyOtp()">Tabbatar OTP</button></div>
-<div id="step3" class="hidden"><div class="face-box"><video id="video" autoplay playsinline></video><div class="face-guide"></div></div><p id="faceStatus" style="text-align:center;font-weight:bold">Danna Bude Kamara</p><img id="facePreview" class="hidden" style="width:200px;margin:10px auto;display:block;border-radius:12px;border:3px solid #00c853"><button id="camBtn" onclick="startCamera()">Bude Kamara 📷</button><button id="captureBtn" class="hidden" onclick="captureFace()" style="background:#00c853;color:#000">Dauki Hoto</button><button id="faceNextBtn" class="hidden" onclick="completeFace()">Face OK ➡️</button><canvas id="canvas" style="display:none"></canvas></div>
-<div id="step4" class="hidden"><input id="pinSet" type="tel" maxlength="4" placeholder="1234" class="pin-input"><button onclick="finalRegister()">Shiga App 🚀</button></div>
+
+<div class="h">
+<h2>KeenatPay Super</h2>
+<small>by Baba • 07012869066 • Niger ↔ Nigeria</small>
+<p id="balT" style="margin-top:6px;font-weight:bold">CFA 50,000 | ₦25,000</p>
 </div>
-<div id="pinModal" class="hidden" style="position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.85);z-index:100;display:flex;align-items:center;justify-content:center"><div class="card" style="width:90%;max-width:360px"><h3 style="text-align:center">🔐 Saka PIN</h3><input id="pinVerify" type="tel" maxlength="4" placeholder="1234" class="pin-input"><p id="pinError" style="color:red;text-align:center;display:none"></p><p id="savedPinInfo" style="text-align:center;font-size:12px;color:green"></p><button onclick="verifyPinAction()">Tabbatar PIN ✅</button><button style="background:#ccc;color:#000" onclick="closePinModal()">Soke</button><button style="background:#ff9800;margin-top:8px" onclick="resetPinDirect()">Manta PIN? Sake Saita 🔄</button></div></div>
-<div id="app" class="hidden"><div class="card" style="background:linear-gradient(135deg,#0a1a4a,#2a5bd7);color:#fff;text-align:center"><h2 id="bCFA">50,000 CFA</h2><h2 id="bNGN">₦25,000</h2><p id="uph"></p><img id="userFace" style="width:80px;height:80px;border-radius:50%;border:3px solid #00ff88;display:none;margin:8px auto"><button style="background:#00ff88;color:#000" onclick="requestPin('fund')">Fund - PIN</button></div><div class="card"><h3>💱 CFA ↔ NGN</h3><select id="fC" onchange="calc()"><option value="CFA">From CFA</option><option value="NGN">From NGN</option></select><input id="fA" type="number" value="10000" oninput="calc()"><select id="tC"><option value="NGN">To NGN</option><option value="CFA">To CFA</option></select><input id="tA" readonly style="background:#e8f5e9;font-weight:bold"><button style="background:#000;color:#00ff88" onclick="requestPin('convert')">Tura Kudi - PIN</button></div><div class="card"><div id="hist">No tx</div><button onclick="location.reload()" style="background:#dc3545">Logout</button></div></div>
+
+<!-- LOGIN -->
+<div id="login" class="c">
+<div id="s1">
+<h3>Shiga - Lambar Waya</h3>
+<input id="ph" value="07012869066" placeholder="Lambar Waya">
+<button onclick="sO()">Tura OTP 📲</button>
+</div>
+<div id="s2" class="hidden">
+<p style="text-align:center">OTP naka: <b id="oD" style="background:#00ff88;padding:6px 14px;border-radius:8px"></b></p>
+<input id="oI" maxlength="6" placeholder="000000" style="text-align:center;letter-spacing:8px;font-size:20px">
+<button onclick="vO()">Tabbatar OTP ✅</button>
+</div>
+<div id="s3" class="hidden">
+<video id="vd" autoplay playsinline></video>
+<p id="fS" style="text-align:center;font-weight:bold;margin:8px">Danna Bude Kamara</p>
+<button id="b1" onclick="oC()">Bude Kamara 📷</button>
+<button id="b2" class="hidden" onclick="cP()">Dauki Hoto ✅</button>
+<button id="b3" class="hidden" onclick="gP()">Face OK ➡️ PIN</button>
+<canvas id="cn" style="display:none"></canvas>
+</div>
+<div id="s4" class="hidden">
+<h3>Saka PIN (1234)</h3>
+<input id="pS" class="pin" maxlength="4" placeholder="1234">
+<button onclick="fin()">Shiga App 🚀</button>
+</div>
+</div>
+
+<!-- APP -->
+<div id="app" class="hidden">
+<div class="c bal">
+<h2 id="bC">CFA 50,000</h2>
+<h2 id="bN">₦25,000</h2>
+<p id="uP" style="margin-top:8px"></p>
+</div>
+
+<div class="tabs">
+<div class="tab active" onclick="tab('convert',this)">💱 Convert</div>
+<div class="tab" onclick="tab('airtime',this)">📞 Airtime</div>
+<div class="tab" onclick="tab('data',this)">📶 Data</div>
+<div class="tab" onclick="tab('ng',this)">🏦 NG Bank</div>
+<div class="tab" onclick="tab('ne',this)">🇳🇪 Niger</div>
+</div>
+
+<div id="convert" class="c conv">
+<h3>💱 Musanya CFA ↔ NGN</h3>
+<small>Rate: 2.5 CFA = 1 NGN | Fee 5%</small>
+<label style="margin-top:8px;display:block;font-weight:bold">CFA → NGN</label>
+<div style="display:flex;gap:6px">
+<input id="fromC" type="number" value="10000" oninput="calcC()" placeholder="CFA">
+<input id="toN" readonly style="background:#fff;font-weight:bold" placeholder="NGN">
+</div>
+<label style="display:block;font-weight:bold">NGN → CFA</label>
+<div style="display:flex;gap:6px">
+<input id="fromN" type="number" value="5000" oninput="calcN()" placeholder="NGN">
+<input id="toC" readonly style="background:#fff;font-weight:bold" placeholder="CFA">
+</div>
+<p id="rateInfo" style="text-align:center;color:#0a7d33;font-weight:bold;margin:8px 0"></p>
+<button onclick="doPay('CFA to NGN Convert')" style="background:#00c853;color:#000">Convert Yanzu - PIN 🔐</button>
+</div>
+
+<div id="airtime" class="c hidden">
+<h3>📞 Siyan Airtime</h3>
+<select id="nA"><option>MTN Nigeria</option><option>Airtel Nigeria</option><option>Glo Nigeria</option><option>9mobile Nigeria</option><option>Airtel Niger</option><option>Orange Niger</option><option>Moov Niger</option></select>
+<input id="numA" placeholder="Lambar waya - 080...">
+<input id="amtA" type="number" placeholder="Nawa? 500, 1000...">
+<button onclick="doPay('Airtime')">Saya Airtime - PIN</button>
+</div>
+
+<div id="data" class="c hidden">
+<h3>📶 Siyan Data</h3>
+<select id="nD"><option>MTN NG 1GB - ₦500</option><option>MTN NG 2GB - ₦1000</option><option>MTN NG 5GB - ₦2500</option><option>Airtel NG 1.5GB - ₦1000</option><option>Glo NG 2GB - ₦1000</option><option>Airtel Niger 2GB - 2000 CFA</option><option>Orange Niger 5GB - 5000 CFA</option><option>Moov Niger 10GB - 8000 CFA</option></select>
+<input id="numD" placeholder="Lambar waya">
+<button onclick="doPay('Data Bundle')">Saya Data - PIN</button>
+</div>
+
+<div id="ng" class="c hidden">
+<h3>🏦 Transfer zuwa Bankin Nigeria</h3>
+<select id="bNG"><option>OPay</option><option>PalmPay</option><option>Moniepoint</option><option>Access Bank</option><option>UBA</option><option>First Bank</option><option>GTBank</option><option>Kuda Bank</option><option>Zenith Bank</option></select>
+<input id="aNG" placeholder="Account Number - 10 digits">
+<input id="amNG" type="number" placeholder="Amount ₦ - misali 5000">
+<button onclick="doPay('Nigeria Bank Transfer')">Tura Kudi - PIN 🔐</button>
+</div>
+
+<div id="ne" class="c hidden">
+<h3>🇳🇪 Transfer zuwa Niger</h3>
+<select id="bNE"><option>Airtel Money Niger</option><option>Orange Money Niger</option><option>Moov Money Niger</option><option>NITA Transfer</option><option>Al Izza Transfer</option></select>
+<input id="aNE" placeholder="Lambar Niger - 227...">
+<input id="amNE" type="number" placeholder="Amount CFA - misali 10000">
+<button onclick="doPay('Niger Transfer')">Tura CFA - PIN 🔐</button>
+</div>
+
+<div class="c">
+<h3>📜 History</h3>
+<div id="hist" style="background:#f8f9ff;padding:10px;border-radius:8px;min-height:40px">Babu transaction tukuna</div>
+<button onclick="location.reload()" style="background:#dc3545;margin-top:10px">Logout</button>
+</div>
+</div>
+
+<!-- PIN MODAL -->
+<div id="pinM" class="hidden modal">
+<div class="c" style="width:92%;max-width:340px">
+<h3 style="text-align:center">🔐 Saka PIN</h3>
+<input id="pV" class="pin" maxlength="4" placeholder="1234">
+<p id="pE" style="color:red;display:none;text-align:center"></p>
+<p id="pS2" style="color:green;text-align:center;font-weight:bold"></p>
+<button onclick="cP2()">Tabbatar PIN ✅</button>
+<button style="background:#ccc;color:#000" onclick="closeM()">Soke ❌</button>
+</div>
+</div>
+
 <script>
-let generatedOtp='',userPhone='',balC=50000,balN=25000,hist=[],stream=null,faceDone=false;
-function sendOtp(){let ph=document.getElementById('ph').value.trim();userPhone=ph;generatedOtp=Math.floor(100000+Math.random()*900000).toString();document.getElementById('step1').classList.add('hidden');document.getElementById('step2').classList.remove('hidden');document.getElementById('otpDemo').innerText=generatedOtp;}
-function verifyOtp(){let otp=document.getElementById('otpInput').value.trim();if(otp!==generatedOtp)return alert('OTP ba daidai ba! '+generatedOtp);document.getElementById('step2').classList.add('hidden');document.getElementById('step3').classList.remove('hidden');}
-async function startCamera(){try{stream=await navigator.mediaDevices.getUserMedia({video:{facingMode:'user'}});document.getElementById('video').srcObject=stream;document.getElementById('faceStatus').innerText='Kamara a bude';document.getElementById('camBtn').classList.add('hidden');document.getElementById('captureBtn').classList.remove('hidden');}catch(e){faceDone=true;document.getElementById('faceStatus').innerText='An yarda ba tare da kamara ba';document.getElementById('faceNextBtn').classList.remove('hidden');}}
-function captureFace(){let v=document.getElementById('video'),c=document.getElementById('canvas');if(v.videoWidth){c.width=v.videoWidth;c.height=v.videoHeight;c.getContext('2d').drawImage(v,0,0);let d=c.toDataURL('image/jpeg');document.getElementById('facePreview').src=d;document.getElementById('facePreview').classList.remove('hidden');localStorage.setItem('face_'+userPhone,d);}document.getElementById('faceStatus').innerHTML='✅ Face Verified!';document.getElementById('faceNextBtn').classList.remove('hidden');faceDone=true;if(stream)stream.getTracks().forEach(t=>t.stop());}
-function completeFace(){document.getElementById('step3').classList.add('hidden');document.getElementById('step4').classList.remove('hidden');}
-function finalRegister(){let pin=document.getElementById('pinSet').value.trim();if(pin.length!==4)return alert('Saka 4 lambobi!');localStorage.setItem('pin_'+userPhone,pin);localStorage.setItem('phone_baba',userPhone);document.getElementById('login').classList.add('hidden');document.getElementById('app').classList.remove('hidden');document.getElementById('uph').innerText=userPhone+' | KeenatPay by Baba';let f=localStorage.getItem('face_'+userPhone);if(f){let i=document.getElementById('userFace');i.src=f;i.style.display='block';}alert('SUCCESS! PIN: '+pin);calc();}
-let pendingAction=null;
-function requestPin(a){pendingAction=a;let s=localStorage.getItem('pin_'+userPhone)||'1234';document.getElementById('pinModal').classList.remove('hidden');document.getElementById('pinModal').style.display='flex';document.getElementById('pinVerify').value='';document.getElementById('pinError').style.display='none';document.getElementById('savedPinInfo').innerText='💡 PIN: '+s;document.getElementById('pinVerify').focus();}
-function verifyPinAction(){let pin=document.getElementById('pinVerify').value.trim();let saved=localStorage.getItem('pin_'+userPhone)||'1234';if(pin!==saved){document.getElementById('pinError').style.display='block';document.getElementById('pinError').innerHTML='Ba daidai ba! Daidai: <b>'+saved+'</b>';return;}closePinModal();if(pendingAction==='convert'){let am=parseFloat(document.getElementById('fA').value)||0,f=document.getElementById('fC').value,to=parseFloat(document.getElementById('tA').value)||0;if(f=='CFA')balC-=am;else balN-=am;if(f=='CFA')balN+=to;else balC+=to;document.getElementById('bCFA').innerText=balC.toLocaleString()+' CFA';document.getElementById('bNGN').innerText='₦'+balN.toLocaleString();let m='✅ Convert '+am+' → '+to.toFixed(2)+' PIN OK';hist.unshift(m);document.getElementById('hist').innerHTML=hist.join('<br>');alert(m);}if(pendingAction==='fund'){balN+=5000;document.getElementById('bNGN').innerText='₦'+balN;alert('✅ Fund ₦5000');}}
-function resetPinDirect(){let n=prompt('Saka SABON PIN:');if(n&&n.length===4){localStorage.setItem('pin_'+userPhone,n);alert('PIN: '+n);closePinModal();}}
-function closePinModal(){document.getElementById('pinModal').classList.add('hidden');document.getElementById('pinModal').style.display='none';}
-function calc(){let f=document.getElementById('fC').value,am=parseFloat(document.getElementById('fA').value)||0,r=0;if(f=='CFA')r=am/2.5*0.95;else r=am*2.5*0.95;document.getElementById('tA').value=r?r.toFixed(2):'';}
+let gO='',u='',bC=50000,bN=25000,pend='',hist=[],st=null;
+function sO(){u=document.getElementById('ph').value;gO=Math.floor(100000+Math.random()*900000).toString();document.getElementById('s1').classList.add('hidden');document.getElementById('s2').classList.remove('hidden');document.getElementById('oD').innerText=gO;}
+function vO(){if(document.getElementById('oI').value!==gO)return alert('OTP ba daidai ba! Daidai: '+gO);document.getElementById('s2').classList.add('hidden');document.getElementById('s3').classList.remove('hidden');}
+async function oC(){try{st=await navigator.mediaDevices.getUserMedia({video:{facingMode:'user'}});document.getElementById('vd').srcObject=st;document.getElementById('b1').classList.add('hidden');document.getElementById('b2').classList.remove('hidden');document.getElementById('fS').innerText='Shiga tsakiyar kamara';}catch(e){document.getElementById('fS').innerText='Kamara ba ta bude ba - ci gaba';document.getElementById('b3').classList.remove('hidden');}}
+function cP(){let v=document.getElementById('vd'),c=document.getElementById('cn');c.width=v.videoWidth;c.height=v.videoHeight;c.getContext('2d').drawImage(v,0,0);document.getElementById('b2').classList.add('hidden');document.getElementById('b3').classList.remove('hidden');document.getElementById('fS').innerHTML='<span class=ok>✅ Face Verified!</span>';if(st)st.getTracks().forEach(t=>t.stop());}
+function gP(){document.getElementById('s3').classList.add('hidden');document.getElementById('s4').classList.remove('hidden');}
+function fin(){let p=document.getElementById('pS').value;if(p.length<4)return alert('Saka PIN 4 lambobi');localStorage.setItem('pin_'+u,p);document.getElementById('login').classList.add('hidden');document.getElementById('app').classList.remove('hidden');document.getElementById('uP').innerText=u+' | KeenatPay Super';calcC();calcN();upd();}
+function tab(id,el){['convert','airtime','data','ng','ne'].forEach(x=>document.getElementById(x).classList.add('hidden'));document.getElementById(id).classList.remove('hidden');document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));el.classList.add('active');}
+function calcC(){let c=parseFloat(document.getElementById('fromC').value)||0;let n=(c/2.5)*0.95;document.getElementById('toN').value=n?n.toFixed(2):'';document.getElementById('rateInfo').innerText=c.toLocaleString()+' CFA = ₦'+(n?n.toFixed(2):0)+' (after 5% fee)';}
+function calcN(){let n=parseFloat(document.getElementById('fromN').value)||0;let c=(n*2.5)*0.95;document.getElementById('toC').value=c?c.toFixed(0):'';}
+function doPay(t){pend=t;let s=localStorage.getItem('pin_'+u)||'1234';document.getElementById('pinM').classList.remove('hidden');document.getElementById('pV').value='';document.getElementById('pE').style.display='none';document.getElementById('pS2').innerText='PIN dinka: '+s;}
+function closeM(){document.getElementById('pinM').classList.add('hidden');}
+function cP2(){let p=document.getElementById('pV').value,s=localStorage.getItem('pin_'+u)||'1234';if(p!==s){document.getElementById('pE').style.display='block';document.getElementById('pE').innerText='Ba daidai ba! Daidai: '+s;return;}closeM();let cAmt=parseFloat(document.getElementById('fromC').value)||0;let nAmt=parseFloat(document.getElementById('toN').value)||0;if(pend.includes('Convert')){if(cAmt>bC)return alert('CFA bai isa ba! Kana da CFA '+bC);bC-=cAmt;bN+=nAmt;}else if(pend.includes('Nigeria')||pend=='Airtime'||pend.includes('Data')){let am=parseFloat(document.getElementById('amNG').value)||parseFloat(document.getElementById('amtA').value)||1000;if(am>bN)return alert('₦ bai isa ba!');bN-=am;}else{let am=parseFloat(document.getElementById('amNE').value)||1000;if(am>bC)return alert('CFA bai isa ba!');bC-=am;}let msg='✅ '+pend+' - SUCCESS - '+new Date().toLocaleTimeString();hist.unshift(msg);document.getElementById('hist').innerHTML=hist.join('<br>');upd();alert(msg+'\nPIN Verified!');}
+function upd(){document.getElementById('bC').innerText='CFA '+bC.toLocaleString();document.getElementById('bN').innerText='₦'+bN.toLocaleString();document.getElementById('balT').innerText='CFA '+bC.toLocaleString()+' | ₦'+bN.toLocaleString();}
 </script>
 </body>
-</html>
+                                                                 </html>
