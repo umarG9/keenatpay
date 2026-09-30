@@ -1,30 +1,160 @@
-<!DOCTYPE html><html lang="ha"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>KeenatPay Super V2</title><style>*{box-sizing:border-box;font-family:system-ui;margin:0;padding:0}body{background:#eef2ff}.h{background:#0a1a4a;color:#fff;padding:14px;text-align:center;position:sticky;top:0;z-index:10}.c{background:#fff;margin:8px;padding:14px;border-radius:12px;box-shadow:0 2px 8px rgba(0,0,0,.1)}input,select,button{width:100%;padding:13px;margin:6px 0;border-radius:10px;border:1px solid #ddd;font-size:15px}button{background:#0a1a4a;color:#fff;font-weight:bold}.tabs{display:flex;gap:5px;overflow-x:auto;padding:10px;background:#fff;margin:8px;border-radius:12px} .tab{padding:10px 14px;background:#ddd;border-radius:20px;white-space:nowrap;font-weight:bold;cursor:pointer;border:2px solid transparent} .tab.active{background:#0a1a4a;color:#fff;border-color:#00ff88} .hidden{display:none!important}.bal{background:linear-gradient(135deg,#0a1a4a,#3a6bff);color:#fff;text-align:center}.pin{font-size:28px;text-align:center;letter-spacing:8px;border:2px solid #0a1a4a}#vd{width:100%;height:200px;object-fit:cover;background:#000;border-radius:10px}.conv{background:#e8f5e9;border:2px solid #00c853}.modal{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.85);z-index:99;display:flex;align-items:center;justify-content:center}</style></head><body>
-<div class="h"><h2>KeenatPay Super V2</h2><small>by Baba - 07012869066</small><p id="balT" style="font-weight:bold;margin-top:4px">CFA 40,000 | ₦28,800</p></div>
-<div id="login" class="c"><div id="s1"><h3>Shiga</h3><input id="ph" value="07012869066"><button onclick="sO()">Tura OTP</button></div><div id="s2" class="hidden"><p style="text-align:center">OTP: <b id="oD" style="background:#00ff88;padding:6px 12px;border-radius:8px"></b></p><input id="oI" placeholder="000000" style="text-align:center;letter-spacing:8px;font-size:22px"><button onclick="vO()">Tabbatar</button></div><div id="s3" class="hidden"><video id="vd" autoplay playsinline></video><p id="fS" style="text-align:center;font-weight:bold">Bude Kamara</p><button id="b1" onclick="oC()">Bude Kamara 📷</button><button id="b2" class="hidden" onclick="cP()">Dauki Hoto</button><button id="b3" class="hidden" onclick="gP()">Face OK</button><canvas id="cn" style="display:none"></canvas></div><div id="s4" class="hidden"><h3>Saka PIN</h3><input id="pS" class="pin" placeholder="1234"><button onclick="fin()">Shiga App 🚀</button></div></div>
+<!DOCTYPE html>
+<html lang="ha">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>KeenatPay LIVE - Baba</title>
+<style>
+*{box-sizing:border-box;font-family:system-ui;margin:0;padding:0}
+body{background:#eef2ff}
+.h{background:#0a1a4a;color:#fff;padding:14px;text-align:center;position:sticky;top:0;z-index:10}
+.live{background:#00ff88;color:#000;padding:4px 10px;border-radius:6px;font-size:12px;font-weight:bold}
+.c{background:#fff;margin:8px;padding:14px;border-radius:12px;box-shadow:0 2px 8px rgba(0,0,0,.1)}
+input,select,button{width:100%;padding:13px;margin:6px 0;border-radius:10px;border:1px solid #ddd;font-size:15px}
+button{background:#0a1a4a;color:#fff;font-weight:bold;cursor:pointer}
+.tabs{display:flex;gap:5px;overflow-x:auto;padding:10px;background:#fff;margin:8px;border-radius:12px}
+.tab{padding:10px 14px;background:#ddd;border-radius:20px;white-space:nowrap;font-weight:bold;cursor:pointer}
+.tab.active{background:#0a1a4a;color:#fff;border:2px solid #00ff88}
+.hidden{display:none!important}
+.bal{background:linear-gradient(135deg,#0a1a4a,#3a6bff);color:#fff;text-align:center}
+.pin{font-size:28px;text-align:center;letter-spacing:8px;border:2px solid #0a1a4a}
+#vd{width:100%;height:200px;object-fit:cover;background:#000;border-radius:10px}
+.conv{background:#e8f5e9;border:2px solid #00c853}
+.modal{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.85);z-index:99;display:flex;align-items:center;justify-content:center}
+</style>
+</head>
+<body>
+<div class="h">
+<h2>KeenatPay LIVE 2.30</h2>
+<div><span class="live">● LIVE</span> <small id="liveRate">Loading live rate...</small></div>
+<p id="balT" style="font-weight:bold;margin-top:4px">CFA 40,000 | ₦28,800</p>
+<small id="lastUpdate"></small>
+</div>
+
+<div id="login" class="c">
+<div id="s1"><h3>Shiga - Lambar Waya</h3><input id="ph" value="07012869066"><button onclick="sO()">Tura OTP</button></div>
+<div id="s2" class="hidden"><p style="text-align:center">OTP naka: <b id="oD" style="background:#00ff88;padding:6px 12px;border-radius:8px"></b></p><input id="oI" placeholder="000000" style="text-align:center;letter-spacing:8px;font-size:22px"><button onclick="vO()">Tabbatar</button></div>
+<div id="s3" class="hidden"><video id="vd" autoplay playsinline></video><p id="fS" style="text-align:center;font-weight:bold">Bude Kamara</p><button id="b1" onclick="oC()">Bude Kamara 📷</button><button id="b2" class="hidden" onclick="cP()">Dauki Hoto</button><button id="b3" class="hidden" onclick="gP()">Face OK → PIN</button><canvas id="cn" style="display:none"></canvas></div>
+<div id="s4" class="hidden"><h3>Saka PIN 4</h3><input id="pS" class="pin" placeholder="1234"><button onclick="fin()">Shiga App 🚀</button></div>
+</div>
+
 <div id="app" class="hidden">
 <div class="c bal"><h3 id="bC">CFA 40,000</h3><h3 id="bN">₦28,800</h3><p id="uP"></p></div>
-<div class="tabs"><div class="tab active" onclick="tab('convert',this)">💱 Convert</div><div class="tab" onclick="tab('airtime',this)">📞 Airtime</div><div class="tab" onclick="tab('data',this)">📶 Data</div><div class="tab" onclick="tab('ng',this)">🏦 NG Bank</div><div class="tab" onclick="tab('ne',this)">🇳🇪 Niger</div></div>
-<div id="convert" class="c conv"><h3>💱 CFA ↔ NGN Convert</h3><small>Rate: 2.5 CFA = 1 NGN, Fee 5%</small><label>CFA</label><input id="fromC" type="number" value="10000" oninput="calcC()"><label>NGN Zaka Samu</label><input id="toN" readonly style="background:#fff;font-weight:bold"><p id="rateInfo" style="text-align:center;color:#0a7d33;font-weight:bold;margin:6px 0"></p><button onclick="doPay('Convert CFA-NGN')" style="background:#00c853;color:#000">Convert - PIN</button><hr style="margin:10px 0"><label>NGN</label><input id="fromN" type="number" value="5000" oninput="calcN()"><label>CFA Zaka Samu</label><input id="toC" readonly style="background:#fff;font-weight:bold"></div>
-<div id="airtime" class="c hidden"><h3>📞 Siyan Airtime</h3><select id="nA"><option>MTN Nigeria</option><option>Airtel Nigeria</option><option>Glo Nigeria</option><option>9mobile</option><option>Airtel Niger</option><option>Orange Niger</option><option>Moov Niger</option></select><input id="numA" placeholder="Lambar: 080..."><input id="amtA" type="number" placeholder="Nawa? 500"><button onclick="doPay('Airtime')">Saya Airtime - PIN 🔐</button></div>
-<div id="data" class="c hidden"><h3>📶 Siyan Data</h3><select id="nD"><option>MTN NG 1GB ₦500</option><option>MTN NG 3GB ₦1500</option><option>Airtel NG 2GB ₦1200</option><option>Glo NG 2.5GB ₦1000</option><option>Airtel Niger 2GB 2000 CFA</option><option>Orange Niger 5GB 5000 CFA</option><option>Moov Niger 10GB 8000 CFA</option></select><input id="numD" placeholder="Lambar waya"><button onclick="doPay('Data')">Saya Data - PIN 🔐</button></div>
-<div id="ng" class="c hidden"><h3>🏦 Tura zuwa Bankin Nigeria</h3><select id="bNG"><option>OPay</option><option>PalmPay</option><option>Moniepoint</option><option>Access Bank</option><option>UBA</option><option>First Bank</option><option>GTB</option><option>Kuda</option><option>Zenith</option></select><input id="aNG" placeholder="Account Number - 10 digits"><input id="amNG" type="number" placeholder="Amount ₦"><button onclick="doPay('Nigeria Bank Transfer')">Tura Kudi - PIN 🔐</button></div>
-<div id="ne" class="c hidden"><h3>🇳🇪 Tura zuwa Niger</h3><select id="bNE"><option>Airtel Money Niger</option><option>Orange Money Niger</option><option>Moov Money Niger</option><option>NITA</option><option>Al Izza</option></select><input id="aNE" placeholder="Lambar Niger - 227..."><input id="amNE" type="number" placeholder="Amount CFA"><button onclick="doPay('Niger Transfer')">Tura CFA - PIN 🔐</button></div>
-<div class="c"><h3>History</h3><div id="hist" style="background:#f5f7ff;padding:10px;border-radius:8px">Babu</div><button onclick="location.reload()" style="background:#dc3545;margin-top:8px">Logout</button></div>
+
+<div class="tabs">
+<div class="tab active" onclick="tab('convert',this)">💱 Convert LIVE</div>
+<div class="tab" onclick="tab('airtime',this)">📞 Airtime</div>
+<div class="tab" onclick="tab('data',this)">📶 Data</div>
+<div class="tab" onclick="tab('ng',this)">🏦 NG Bank</div>
+<div class="tab" onclick="tab('ne',this)">🇳🇪 Niger</div>
 </div>
-<div id="pinM" class="hidden modal"><div class="c" style="width:92%;max-width:340px"><h3 style="text-align:center">🔐 PIN</h3><input id="pV" class="pin" placeholder="1234"><p id="pE" style="color:red;display:none;text-align:center"></p><p id="pS2" style="color:green;text-align:center;font-weight:bold"></p><button onclick="cP2()">Tabbatar ✅</button><button style="background:#ccc;color:#000" onclick="closeM()">Soke</button></div></div>
+
+<div id="convert" class="c conv">
+<h3>💱 Convert LIVE - 1 XOF = 2.30 NGN (Dynamic)</h3>
+<div style="background:#0a1a4a;color:#fff;padding:10px;border-radius:10px;text-align:center;margin:8px 0">
+<div id="rateBox" style="font-size:20px;font-weight:bold">1 XOF = 2.30 NGN</div>
+<small>Live from World Market - Auto refresh 60s</small>
+</div>
+<label>CFA (XOF) → NGN</label>
+<input id="fromC" type="number" value="10000" oninput="calcC()" placeholder="10000">
+<label>NGN Zaka Samu (bayan 5% fee)</label>
+<input id="toN" readonly style="background:#fff;font-weight:bold;font-size:18px">
+<p id="rateInfo" style="text-align:center;color:#0a7d33;font-weight:bold;margin:8px 0"></p>
+<button onclick="doPay('Convert LIVE 2.30')" style="background:#00c853;color:#000;font-size:16px">Convert Yanzu - PIN 🔐</button>
+<button onclick="fetchLiveRate()" style="background:#fff;color:#0a1a4a;border:2px solid #0a1a4a;margin-top:6px">🔄 Sabunta Live Rate Yanzu</button>
+<hr style="margin:12px 0">
+<label>NGN → CFA</label>
+<input id="fromN" type="number" value="5000" oninput="calcN()" placeholder="5000">
+<label>CFA Zaka Samu</label>
+<input id="toC" readonly style="background:#fff;font-weight:bold">
+</div>
+
+<div id="airtime" class="c hidden">
+<h3>📞 Siyan Airtime</h3>
+<select id="nA"><option>MTN Nigeria</option><option>Airtel Nigeria</option><option>Glo Nigeria</option><option>9mobile Nigeria</option><option>Airtel Niger</option><option>Orange Niger</option><option>Moov Niger</option></select>
+<input id="numA" placeholder="Lambar waya 080...">
+<input id="amtA" type="number" placeholder="Nawa? 500, 1000">
+<button onclick="doPay('Airtime')">Saya Airtime - PIN 🔐</button>
+</div>
+
+<div id="data" class="c hidden">
+<h3>📶 Siyan Data</h3>
+<select id="nD"><option>MTN NG 1GB - ₦500</option><option>MTN NG 3GB - ₦1500</option><option>Airtel NG 2GB - ₦1200</option><option>Glo NG 2.5GB - ₦1000</option><option>Airtel Niger 2GB - 2000 CFA</option><option>Orange Niger 5GB - 5000 CFA</option><option>Moov Niger 10GB - 8000 CFA</option></select>
+<input id="numD" placeholder="Lambar waya">
+<button onclick="doPay('Data')">Saya Data - PIN 🔐</button>
+</div>
+
+<div id="ng" class="c hidden">
+<h3>🏦 Transfer zuwa Bankin Nigeria</h3>
+<select id="bNG"><option>OPay</option><option>PalmPay</option><option>Moniepoint</option><option>Access Bank</option><option>UBA</option><option>First Bank</option><option>GTB</option><option>Kuda</option><option>Zenith Bank</option></select>
+<input id="aNG" placeholder="Account Number 10 digits">
+<input id="amNG" type="number" placeholder="Amount ₦ misali 5000">
+<button onclick="doPay('Nigeria Bank Transfer')">Tura Kudi - PIN 🔐</button>
+</div>
+
+<div id="ne" class="c hidden">
+<h3>🇳🇪 Transfer zuwa Niger</h3>
+<select id="bNE"><option>Airtel Money Niger</option><option>Orange Money Niger</option><option>Moov Money Niger</option><option>NITA Transfer</option><option>Al Izza</option></select>
+<input id="aNE" placeholder="Lambar Niger 227...">
+<input id="amNE" type="number" placeholder="Amount CFA misali 10000">
+<button onclick="doPay('Niger Transfer')">Tura CFA - PIN 🔐</button>
+</div>
+
+<div class="c">
+<h3>📜 History</h3>
+<div id="hist" style="background:#f5f7ff;padding:10px;border-radius:8px">Babu transaction</div>
+<button onclick="location.reload()" style="background:#dc3545;margin-top:8px">Logout</button>
+</div>
+</div>
+
+<div id="pinM" class="hidden modal">
+<div class="c" style="width:92%;max-width:340px">
+<h3 style="text-align:center">🔐 Saka PIN</h3>
+<input id="pV" class="pin" maxlength="4" placeholder="1234">
+<p id="pE" style="color:red;display:none;text-align:center"></p>
+<p id="pS2" style="color:green;text-align:center;font-weight:bold"></p>
+<button onclick="cP2()">Tabbatar PIN ✅</button>
+<button style="background:#ccc;color:#000" onclick="closeM()">Soke ❌</button>
+</div>
+</div>
+
 <script>
 let gO='',u='',bC=40000,bN=28800,pend='',hist=[],st=null;
+let LIVE_RATE = 2.30;
+async function fetchLiveRate(){
+  try{
+    document.getElementById('liveRate').innerText='Updating...';
+    let res = await fetch('https://api.exchangerate-api.com/v4/latest/XOF');
+    let data = await res.json();
+    if(data && data.rates && data.rates.NGN){
+      LIVE_RATE = data.rates.NGN;
+    } else {
+      let r2 = await fetch('https://open.er-api.com/v6/latest/XOF');
+      let d2 = await r2.json();
+      if(d2 && d2.rates && d2.rates.NGN) LIVE_RATE = d2.rates.NGN;
+    }
+  }catch(e){ LIVE_RATE = 2.30; }
+  document.getElementById('liveRate').innerText='1 XOF = '+LIVE_RATE.toFixed(4)+' NGN (LIVE)';
+  document.getElementById('rateBox').innerText='1 XOF = '+LIVE_RATE.toFixed(4)+' NGN';
+  document.getElementById('lastUpdate').innerText='Last update: '+new Date().toLocaleTimeString()+' - Auto 60s';
+  calcC(); calcN();
+}
+fetchLiveRate();
+setInterval(fetchLiveRate, 60000);
+
 function sO(){u=document.getElementById('ph').value;gO=Math.floor(100000+Math.random()*900000).toString();document.getElementById('s1').classList.add('hidden');document.getElementById('s2').classList.remove('hidden');document.getElementById('oD').innerText=gO;}
-function vO(){if(document.getElementById('oI').value!==gO)return alert('OTP: '+gO);document.getElementById('s2').classList.add('hidden');document.getElementById('s3').classList.remove('hidden');}
+function vO(){if(document.getElementById('oI').value!==gO)return alert('OTP ba daidai ba! Daidai: '+gO);document.getElementById('s2').classList.add('hidden');document.getElementById('s3').classList.remove('hidden');}
 async function oC(){try{st=await navigator.mediaDevices.getUserMedia({video:{facingMode:'user'}});document.getElementById('vd').srcObject=st;document.getElementById('b1').classList.add('hidden');document.getElementById('b2').classList.remove('hidden');}catch(e){document.getElementById('b3').classList.remove('hidden');}}
 function cP(){let v=document.getElementById('vd'),c=document.getElementById('cn');c.width=v.videoWidth;c.height=v.videoHeight;c.getContext('2d').drawImage(v,0,0);document.getElementById('b2').classList.add('hidden');document.getElementById('b3').classList.remove('hidden');document.getElementById('fS').innerText='✅ Face OK';if(st)st.getTracks().forEach(t=>t.stop());}
 function gP(){document.getElementById('s3').classList.add('hidden');document.getElementById('s4').classList.remove('hidden');}
-function fin(){let p=document.getElementById('pS').value;if(p.length<4)return alert('PIN 4');localStorage.setItem('pin_'+u,p);document.getElementById('login').classList.add('hidden');document.getElementById('app').classList.remove('hidden');document.getElementById('uP').innerText=u;calcC();calcN();upd();}
+function fin(){let p=document.getElementById('pS').value;if(p.length<4)return alert('Saka PIN 4');localStorage.setItem('pin_'+u,p);document.getElementById('login').classList.add('hidden');document.getElementById('app').classList.remove('hidden');document.getElementById('uP').innerText=u+' | KeenatPay LIVE';calcC();calcN();upd();}
 function tab(id,el){['convert','airtime','data','ng','ne'].forEach(x=>document.getElementById(x).classList.add('hidden'));document.getElementById(id).classList.remove('hidden');document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));el.classList.add('active');}
-function calcC(){let c=parseFloat(document.getElementById('fromC').value)||0;let n=(c/2.5)*0.95;document.getElementById('toN').value=n?n.toFixed(2):'';document.getElementById('rateInfo').innerText=c.toLocaleString()+' CFA = ₦'+(n?n.toFixed(2):0);}
-function calcN(){let n=parseFloat(document.getElementById('fromN').value)||0;let c=(n*2.5)*0.95;document.getElementById('toC').value=c?c.toFixed(0):'';}
-function doPay(t){pend=t;let s=localStorage.getItem('pin_'+u)||'1234';document.getElementById('pinM').classList.remove('hidden');document.getElementById('pV').value='';document.getElementById('pE').style.display='none';document.getElementById('pS2').innerText='PIN: '+s;}
+function calcC(){let c=parseFloat(document.getElementById('fromC').value)||0;let n=(c*LIVE_RATE)*0.95;document.getElementById('toN').value=n?n.toFixed(2):'';document.getElementById('rateInfo').innerText=c.toLocaleString()+' XOF = ₦'+(n?n.toFixed(2):0)+' (LIVE '+LIVE_RATE.toFixed(4)+')';}
+function calcN(){let n=parseFloat(document.getElementById('fromN').value)||0;let c=(n/LIVE_RATE)*0.95;document.getElementById('toC').value=c?c.toFixed(0):'';}
+function doPay(t){pend=t;let s=localStorage.getItem('pin_'+u)||'1234';document.getElementById('pinM').classList.remove('hidden');document.getElementById('pV').value='';document.getElementById('pE').style.display='none';document.getElementById('pS2').innerText='PIN dinka: '+s;}
 function closeM(){document.getElementById('pinM').classList.add('hidden');}
-function cP2(){let p=document.getElementById('pV').value,s=localStorage.getItem('pin_'+u)||'1234';if(p!==s){document.getElementById('pE').style.display='block';document.getElementById('pE').innerText='Ba daidai! '+s;return;}closeM();let cAmt=parseFloat(document.getElementById('fromC').value)||0;let nAmt=parseFloat(document.getElementById('toN').value)||0;if(pend.includes('Convert')){if(cAmt>bC)return alert('CFA bai isa!');bC-=cAmt;bN+=nAmt;}else if(pend.includes('Nigeria')||pend=='Airtime'||pend.includes('Data')){bN-=500;}else{bC-=1000;}let msg='✅ '+pend+' SUCCESS '+new Date().toLocaleTimeString();hist.unshift(msg);document.getElementById('hist').innerHTML=hist.join('<br>');upd();alert(msg);}
+function cP2(){let p=document.getElementById('pV').value,s=localStorage.getItem('pin_'+u)||'1234';if(p!==s){document.getElementById('pE').style.display='block';document.getElementById('pE').innerText='Ba daidai ba! Daidai: '+s;return;}closeM();let cAmt=parseFloat(document.getElementById('fromC').value)||0;let nAmt=parseFloat(document.getElementById('toN').value)||0;if(pend.includes('Convert')){if(cAmt>bC)return alert('CFA bai isa ba! Kana da CFA '+bC);bC-=cAmt;bN+=nAmt;}else if(pend.includes('Nigeria')||pend=='Airtime'||pend.includes('Data')){let am=parseFloat(document.getElementById('amNG').value)||parseFloat(document.getElementById('amtA').value)||500;if(am>bN)return alert('₦ bai isa ba!');bN-=am;}else{let am=parseFloat(document.getElementById('amNE').value)||1000;if(am>bC)return alert('CFA bai isa ba!');bC-=am;}let msg='✅ '+pend+' LIVE '+LIVE_RATE.toFixed(4)+' SUCCESS '+new Date().toLocaleTimeString();hist.unshift(msg);document.getElementById('hist').innerHTML=hist.join('<br>');upd();alert(msg+'\nPIN Verified!');}
 function upd(){document.getElementById('bC').innerText='CFA '+bC.toLocaleString();document.getElementById('bN').innerText='₦'+bN.toLocaleString();document.getElementById('balT').innerText='CFA '+bC.toLocaleString()+' | ₦'+bN.toLocaleString();}
-</script></body></html>
+</script>
+</body>
+  </html>
