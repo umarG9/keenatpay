@@ -1,41 +1,349 @@
-<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>KeenatPay Premium</title><style>@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;700;900&display=swap');*{box-sizing:border-box;font-family:'Outfit',system-ui;margin:0;padding:0}body{background:#12002b;color:#fff;min-height:100vh}.h{background:linear-gradient(135deg,#1a0033,#4a148c,#7b2ff7);padding:20px;text-align:center;box-shadow:0 10px 30px rgba(123,47,247,.4)}.h h2{font-weight:900;letter-spacing:1px;font-size:28px}.h p{opacity:.9;margin-top:6px}.c{background:rgba(255,255,255,.08);backdrop-filter:blur(12px);margin:10px;padding:16px;border-radius:20px;border:1px solid rgba(255,255,255,.15);box-shadow:0 8px 20px rgba(0,0,0,.3)}input,select,button{width:100%;padding:14px;margin:7px 0;border-radius:14px;border:1px solid rgba(255,255,255,.2);background:rgba(255,255,255,.1);color:#fff;font-size:15px}input::placeholder{color:rgba(255,255,255,.5)}button{background:linear-gradient(135deg,#7b2ff7,#ff2e93);color:#fff;font-weight:900;border:none;box-shadow:0 6px 15px rgba(123,47,247,.5);cursor:pointer}button:active{transform:scale(.98)}.hidden{display:none!important}.bal{background:linear-gradient(135deg,#7b2ff7,#ff2e93,#ff8a00);color:#fff;text-align:center;padding:22px;border-radius:20px}.tab{background:rgba(255,255,255,.1);color:#fff;padding:9px 14px;border-radius:25px;margin:3px;font-size:13px;border:1px solid rgba(255,255,255,.2)}.tab.active{background:#fff;color:#4a148c;font-weight:900}.kyc{background:linear-gradient(135deg,rgba(255,193,7,.15),rgba(255,152,0,.15));border:2px solid #ffb300}.face-box{width:140px;height:140px;border:3px solid #7b2ff7;border-radius:50%;margin:12px auto;display:flex;align-items:center;justify-content:center;font-size:55px;background:rgba(123,47,247,.15);box-shadow:0 0 30px rgba(123,47,247,.5);transition:.3s}.modal{position:fixed;inset:0;background:rgba(18,0,43,.92);z-index:99;display:flex;align-items:center;justify-content:center;padding:16px;backdrop-filter:blur(10px)}.hist{max-height:200px;overflow:auto}</style></head><body>
-<div class="h"><h2>💜 KeenatPay</h2><p id="balT">CFA 0 | ₦0</p><small id="kycStatus" style="background:rgba(0,0,0,.3);padding:4px 10px;border-radius:20px;font-size:11px">🔴 KYC Not Verified</small></div>
-<div id="login" class="c" style="margin-top:30px"><h3 style="text-align:center;margin-bottom:10px">Barka da zuwa Premium</h3><input id="ph" value="07012869066"><button onclick="sO()">Tura OTP ✨</button><div id="s2" class="hidden"><p style="text-align:center;font-size:13px">OTP: <b id="oD" style="background:#7b2ff7;padding:6px 10px;border-radius:10px"></b> ko 123456</p><input id="oI" placeholder="Shigar da OTP"><button onclick="vO()">Tabbatar</button></div><div id="s4" class="hidden"><input id="pS" type="password" placeholder="PIN 4" maxlength="4"><button onclick="fin()">Shiga 💜</button></div></div>
-<div id="app" class="hidden">
-<div class="c bal"><h2 id="bC">CFA 0</h2><h2 id="bN">₦0</h2><small>Premium Wallet • 07012869066</small></div>
-<div id="kycBox" class="c kyc"><h3>📸 Face Verification</h3><p style="font-size:11px;opacity:.8;margin:5px 0">Tabbatar da fuska don buɗe Niger & Stocks</p><div class="face-box" id="faceBox">📷</div><div style="background:rgba(0,0,0,.3);padding:8px;border-radius:10px;font-size:11px;text-align:center" id="faceRes">Danna don fara Face ID</div><button onclick="startFace()" id="faceBtn" style="margin-top:10px">🔓 Fara Face Verification</button></div>
-<div class="c" style="display:flex;flex-wrap:wrap;justify-content:center"><button onclick="tab('d')" id="t-d" class="tab active">💰 Deposit</button><button onclick="tab('c')" id="t-c" class="tab">💱 Convert</button><button onclick="tab('data')" id="t-data" class="tab">📱 Data</button><button onclick="tab('ne')" id="t-ne" class="tab">🇳🇪 Niger</button><button onclick="tab('stock')" id="t-stock" class="tab">📈 IPO</button></div>
-<div id="d" class="c"><h3>💰 Deposit - Moniepoint 9026133849</h3><input id="depN" type="number" placeholder="₦ ka tura"><button onclick="depN()">✅ Tabbatar ₦</button><input id="depC" type="number" placeholder="CFA"><button onclick="depC()" style="background:linear-gradient(135deg,#ff8a00,#ff2e93)">✅ Tabbatar CFA</button></div>
-<div id="c" class="c hidden"><h3>💱 Convert - 1 CFA = 2.30 NGN</h3>CFA <input id="fromC" type="number" value="10000" oninput="calcC()"><input id="toN" readonly><button onclick="doPay('CFA-NGN')">Convert CFA → NGN</button><hr style="margin:12px 0;opacity:.2">NGN <input id="fromN" type="number" value="5000" oninput="calcN()"><input id="toC" readonly><button onclick="doPay('NGN-CFA')">Convert NGN → CFA</button></div>
-<div id="data" class="c hidden"><h3>📱 Data & Airtime</h3><select id="net"><option>MTN</option><option>Airtel</option><option>Glo</option><option>9mobile</option></select><input id="dPhone" placeholder="Lambar waya"><select id="dPlan"><option>1GB - ₦300</option><option>2GB - ₦600</option><option>5GB - ₦1500</option></select><button onclick="doPay('DATA')">Siya Yanzu</button></div>
-<div id="ne" class="c hidden"><h3>🇳🇪 Nigeria → Niger CFA</h3><div style="background:rgba(123,47,247,.2);padding:10px;border-radius:12px;font-size:12px">Rate: 1 NGN = 1.5 CFA | Fee 3%</div><input id="aNE" placeholder="227 80..."><input id="amCFA" type="number" placeholder="CFA"><input id="amNGNcalc" readonly><button onclick="calcNE()" style="background:rgba(255,255,255,.15)">Lissafta</button><button onclick="doPay('NE')">🚀 Tura Niger</button></div>
-<div id="stock" class="c hidden"><h3>📈 Stocks IPO - Gote</h3><div style="background:rgba(255,255,255,.08);padding:12px;border-radius:14px;margin:8px 0;display:flex;justify-content:space-between"><div><b>MTN NG</b><br><small style="color:#0f0">₦240 • +2.3%</small></div><button style="width:auto;padding:8px 16px" onclick="doPay('STOCK')">Siya</button></div><div style="background:rgba(255,255,255,.08);padding:12px;border-radius:14px;display:flex;justify-content:space-between"><div><b>DANGOTE</b><br><small>₦400</small></div><button style="width:auto;padding:8px 16px" onclick="doPay('STOCK')">Siya</button></div></div>
-<div class="c"><h4>📜 History</h4><div id="hist" class="hist" style="background:rgba(0,0,0,.3);padding:10px;font-size:11px;border-radius:12px">Babu</div><button onclick="location.reload()" style="background:rgba(255,0,0,.3);margin-top:10px;border:1px solid red">Logout</button></div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>G9-GROUP Super App</title>
+<script src="https://js.paystack.co/v1/inline.js"></script>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;700;900&display=swap');
+*{box-sizing:border-box;font-family:'Outfit',system-ui;margin:0;padding:0}
+body{background:#12002b;color:#fff;min-height:100vh;padding-bottom:90px}
+.h{background:linear-gradient(135deg,#1a0033,#4a148c,#7b2ff7);padding:18px;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:20}
+.h h2{font-weight:900;letter-spacing:1px;font-size:22px}
+.badge{background:rgba(0,0,0,.35);padding:6px 12px;border-radius:20px;font-size:10px}
+.c{background:rgba(255,255,255,.08);backdrop-filter:blur(12px);margin:10px;padding:16px;border-radius:20px;border:1px solid rgba(255,255,255,.15)}
+input,select,button{width:100%;padding:13px;margin:7px 0;border-radius:14px;border:1px solid rgba(255,255,255,.2);background:rgba(255,255,255,.1);color:#fff;font-size:14px}
+input::placeholder{color:rgba(255,255,255,.5)}
+button{background:linear-gradient(135deg,#7b2ff7,#ff2e93);color:#fff;font-weight:900;border:none;cursor:pointer}
+button:disabled{opacity:.5}
+.hidden{display:none!important}
+.bal{background:linear-gradient(135deg,#7b2ff7,#ff2e93,#ff8a00);text-align:center;padding:20px;border-radius:20px}
+.tab{background:rgba(255,255,255,.1);padding:8px 13px;border-radius:25px;margin:3px;font-size:12px;border:1px solid rgba(255,255,255,.2);display:inline-block;cursor:pointer}
+.tab.active{background:#fff;color:#4a148c;font-weight:900}
+.bottomNav{position:fixed;bottom:0;left:0;right:0;background:rgba(18,0,43,.98);display:flex;justify-content:space-around;padding:8px 0;border-top:1px solid rgba(255,255,255,.15);z-index:30}
+.navItem{flex:1;text-align:center;cursor:pointer;opacity:.5}.navItem.active{opacity:1;color:#ff2e93}
+.navItem div{font-size:18px}.navItem p{font-size:8px;font-weight:700}
+.charge{background:rgba(255,235,59,.15);border:1px solid rgba(255,235,59,.4);border-radius:10px;padding:8px;margin-top:8px;font-size:11px;display:flex;justify-content:space-between}
+.langBtn{width:32%;display:inline-block;background:rgba(255,255,255,.1);padding:10px;border-radius:12px;text-align:center;cursor:pointer;border:1px solid rgba(255,255,255,.15);font-size:12px;font-weight:700}
+.langBtn.active{background:#fff;color:#4a148c}
+.profilePic{width:80px;height:80px;border-radius:50%;background:linear-gradient(135deg,#7b2ff7,#ff2e93);margin:0 auto;display:flex;align-items:center;justify-content:center;font-size:32px;font-weight:900}
+.hist{max-height:180px;overflow:auto;background:rgba(0,0,0,.3);padding:10px;border-radius:12px;font-size:11px}
+</style>
+</head>
+<body>
+
+<div class="h">
+<div><h2 id="appTitle">G9-GROUP</h2><small id="appSub" style="opacity:.7;font-size:10px">Super App</small></div>
+<div style="text-align:right"><div class="badge" id="balTop">₦0 | CFA 0</div><div style="font-size:9px;margin-top:3px" id="uTop">Guest</div></div>
 </div>
-<div id="pm" class="hidden modal"><div class="c" style="width:90%;background:#1a0033"><h3 id="pt">🔐 PIN</h3><input id="pV" type="password" placeholder="****" maxlength="4" style="text-align:center;font-size:24px;letter-spacing:10px"><p id="pE" style="color:#ff2e93;display:none"></p><button onclick="cP()">Tabbatar PIN 💜</button><button style="background:rgba(255,255,255,.1)" onclick="document.getElementById('pm').classList.add('hidden')">Soke</button></div></div>
+
+<!-- LOGIN -->
+<div id="login" class="c" style="margin-top:20px">
+<h3 style="text-align:center" id="welcomeT">Welcome Premium</h3>
+<div style="display:flex;gap:6px;margin:10px 0"><div class="langBtn active" onclick="setLang('en')">EN English</div><div class="langBtn" onclick="setLang('ha')">HA Hausa</div><div class="langBtn" onclick="setLang('fr')">FR Français</div></div>
+<input id="ph" placeholder="Phone 070..." value="07012869066">
+<button onclick="sendOtp()" id="btnOtp">Send OTP ✨</button>
+<div id="s2" class="hidden"><p style="text-align:center;font-size:12px">OTP: <b id="oD" style="background:#7b2ff7;padding:6px 10px;border-radius:10px"></b> or 123456</p><input id="oI" placeholder="Enter OTP"><button onclick="verifyOtp()" id="btnVerify">Verify</button></div>
+<div id="s4" class="hidden"><input id="pS" type="password" placeholder="PIN 4 digits" maxlength="4"><button onclick="finishLogin()" id="btnLogin">Login 💜</button></div>
+</div>
+
+<!-- MAIN APP -->
+<div id="app" class="hidden">
+
+<div class="c bal"><h2 id="bC">CFA 0</h2><h2 id="bN">₦0</h2><small id="walletSub">Premium Wallet • Profit ₦0</small></div>
+
+<div class="c" style="display:flex;flex-wrap:wrap;justify-content:center">
+<span class="tab active" onclick="openTab('d')" id="tb-d">💰 Deposit</span>
+<span class="tab" onclick="openTab('c')" id="tb-c">💱 Convert</span>
+<span class="tab" onclick="openTab('data')" id="tb-data">📱 Data</span>
+<span class="tab" onclick="openTab('air')" id="tb-air">📞 Airtime</span>
+<span class="tab" onclick="openTab('ne')" id="tb-ne">🇳🇪 Niger</span>
+<span class="tab" onclick="openTab('profile')" id="tb-profile">👤 Profile</span>
+<span class="tab" onclick="openTab('settings')" id="tb-settings">⚙️ Settings</span>
+</div>
+
+<!-- DEPOSIT + PAYSTACK -->
+<div id="d" class="c">
+<h3 id="tDeposit">💰 Deposit - Paystack</h3>
+<input id="depEmail" type="email" placeholder="Email: you@gmail.com" value="customer@g9group.com">
+<input id="depN" type="number" placeholder="NGN Amount Min ₦100">
+<div class="charge"><span id="lAmount">Amount:</span><span id="d1">₦0</span></div>
+<div class="charge"><span id="lFee">Fee:</span><span>₦5</span></div>
+<div class="charge" style="font-weight:900"><span id="lTotal">Total Paystack:</span><span id="dTotal">₦5</span></div>
+<button onclick="payWithPaystack()" id="btnPaystack" style="background:linear-gradient(135deg,#00C3F5,#0066FF)">💳 Pay with Paystack</button>
+<button onclick="depCash()" id="btnManual" style="background:rgba(255,255,255,.15)">✅ Manual Confirm (Demo)</button>
+<input id="depC" type="number" placeholder="CFA Amount" style="margin-top:12px"><button onclick="depCFA()" id="btnCFA">✅ Confirm CFA</button>
+<div id="payLog" class="hist" style="margin-top:8px"></div>
+</div>
+
+<!-- CONVERT -->
+<div id="c" class="c hidden"><h3 id="tConvert">💱 Convert - 1 CFA = 2.30 NGN</h3>CFA <input id="fromC" type="number" value="10000" oninput="calcC()"><input id="toN" readonly><button onclick="doAction('CFA-NGN')" id="btnCfaNgn">Convert CFA → NGN</button><hr style="margin:12px 0;opacity:.2">NGN <input id="fromN" type="number" value="5000" oninput="calcN()"><input id="toC" readonly><button onclick="doAction('NGN-CFA')" id="btnNgnCfa">Convert NGN → CFA</button></div>
+
+<!-- DATA -->
+<div id="data" class="c hidden"><h3 id="tData">📱 Data - BlessData API</h3><select id="net"><option value="1">MTN</option><option value="2">GLO</option><option value="3">AIRTEL</option><option value="4">9MOBILE</option></select><input id="dPhone" placeholder="Phone 080..."><select id="dPlan"><option value="1">1GB - ₦280</option><option value="2">2GB - ₦550</option><option value="3">3GB - ₦800</option><option value="5">5GB - ₦1300</option></select><div class="charge"><span id="lDataPrice">Price:</span><span id="dataPrice">₦280</span></div><div class="charge"><span>Fee:</span><span>₦5</span></div><div class="charge" style="font-weight:900"><span>Total:</span><span id="dataTotal">₦285</span></div><button onclick="doAction('DATA')" id="btnData">Buy Now +₦5</button></div>
+
+<!-- AIRTIME -->
+<div id="air" class="c hidden"><h3 id="tAirtime">📞 Airtime</h3><select id="netAir"><option value="1">MTN</option><option value="2">GLO</option><option value="3">AIRTEL</option><option value="4">9MOBILE</option></select><input id="airPhone" placeholder="Phone 080..."><input id="airAmt" type="number" placeholder="Amount 100"><div class="charge"><span>Amount:</span><span id="airPrice">₦0</span></div><div class="charge"><span>Fee:</span><span>₦5</span></div><div class="charge" style="font-weight:900"><span>Total:</span><span id="airTotal">₦5</span></div><button onclick="doAction('AIRTIME')" id="btnAir">Send Airtime +₦5</button></div>
+
+<!-- NIGER -->
+<div id="ne" class="c hidden"><h3 id="tNiger">🇳🇪 Nigeria → Niger</h3><div style="background:rgba(123,47,247,.2);padding:10px;border-radius:12px;font-size:12px">Rate: 1 NGN = 1.5 CFA | Fee 3%</div><input id="aNE" placeholder="227 80..."><input id="amCFA" type="number" placeholder="CFA to send"><input id="amNGNcalc" readonly><button onclick="calcNE()" id="btnCalc">Calculate</button><button onclick="doAction('NE')" id="btnNiger">🚀 Send Niger</button></div>
+
+<!-- PROFILE EDIT -->
+<div id="profile" class="c hidden">
+<h3 id="tProfile">👤 Edit Profile</h3>
+<div class="profilePic" id="pPic">G9</div>
+<input id="pName" placeholder="Full Name">
+<input id="pPhone" placeholder="Phone Number">
+<input id="pEmail" placeholder="Email Address">
+<input id="pCity" placeholder="City - e.g Kano">
+<button onclick="saveProfile()" id="btnSaveProfile">💾 Save Profile</button>
+<div style="margin-top:12px;padding:10px;background:rgba(0,0,0,.3);border-radius:12px;font-size:11px" id="profileInfo"></div>
+</div>
+
+<!-- SETTINGS - LANGUAGE + SECURITY + EMAIL CONNECT -->
+<div id="settings" class="c hidden">
+<h3 id="tSettings">⚙️ Settings</h3>
+
+<div style="background:rgba(255,255,255,.08);padding:12px;border-radius:14px;margin-bottom:10px">
+<b id="lLang">🌍 Language / Harshe / Langue</b>
+<div style="display:flex;gap:6px;margin-top:8px">
+<div class="langBtn active" id="lb-en" onclick="setLang('en')">English</div>
+<div class="langBtn" id="lb-ha" onclick="setLang('ha')">Hausa</div>
+<div class="langBtn" id="lb-fr" onclick="setLang('fr')">Français</div>
+</div>
+</div>
+
+<div style="background:rgba(255,255,255,.08);padding:12px;border-radius:14px;margin-bottom:10px">
+<b id="lSecurity">🔐 Security - Change PIN</b>
+<input id="oldPin" type="password" placeholder="Old PIN" maxlength="4">
+<input id="newPin" type="password" placeholder="New PIN 4 digits" maxlength="4">
+<input id="confirmPin" type="password" placeholder="Confirm New PIN" maxlength="4">
+<button onclick="changePin()" id="btnChangePin">🔑 Change PIN +₦5 Fee</button>
+</div>
+
+<div style="background:rgba(255,255,255,.08);padding:12px;border-radius:14px;margin-bottom:10px">
+<b id="lEmail">📧 Connect Email</b>
+<input id="connEmail" type="email" placeholder="you@gmail.com">
+<button onclick="connectEmail()" id="btnConnectEmail">📧 Connect Email</button>
+<div id="emailStatus" style="font-size:11px;margin-top:6px;opacity:.7">Not connected</div>
+</div>
+
+<div style="background:rgba(255,0,0,.15);padding:12px;border-radius:14px">
+<b id="lDanger">⚠️ Danger Zone</b><br>
+<small id="lDangerDesc" style="opacity:.7">This will delete all data</small>
+<button onclick="if(confirm('Delete all?')){localStorage.clear();location.reload()}" style="background:rgba(255,0,0,.6);margin-top:8px" id="btnReset">🗑️ Reset App</button>
+<button onclick="logout()" style="background:rgba(255,255,255,.1);margin-top:6px" id="btnLogout">Logout</button>
+</div>
+
+</div>
+
+<div class="c"><h4 id="tHistory">📜 History</h4><div id="hist" class="hist">Babu / None</div></div>
+
+</div>
+
+<div class="bottomNav">
+<div class="navItem active" onclick="openTab('d')"><div>🏠</div><p id="navHome">HOME</p></div>
+<div class="navItem" onclick="openTab('data')"><div>📱</div><p>DATA</p></div>
+<div class="navItem" onclick="openTab('profile')"><div>👤</div><p id="navProfile">PROFILE</p></div>
+<div class="navItem" onclick="openTab('settings')"><div>⚙️</div><p id="navSettings">SETTINGS</p></div>
+</div>
+
 <script>
-let g='',u='',bC=0,bN=0,pe='',hi=[],kyc=false;
-function ld(){try{let d=JSON.parse(localStorage.getItem('kp_'+(u||'070'))||'{}');bC=d.bC||0;bN=d.bN||0;hi=d.hi||[];kyc=d.kyc||false;if(kyc)doneKYC();}catch(e){}}
-function sv(){localStorage.setItem('kp_'+u,JSON.stringify({bC:bC,bN:bN,hi:hi,kyc:kyc}));}
-function sO(){u=document.getElementById('ph').value;g=Math.floor(100000+Math.random()*900000)+'';document.getElementById('oD').innerText=g;document.getElementById('s2').classList.remove('hidden');ld();}
-function vO(){let v=document.getElementById('oI').value;if(v!==g&&v!=='123456')return alert('OTP: '+g);document.getElementById('s4').classList.remove('hidden');}
-function fin(){let p=document.getElementById('pS').value;if(p.length<4)return alert('PIN 4');localStorage.setItem('pin_'+u,p);document.getElementById('login').classList.add('hidden');document.getElementById('app').classList.remove('hidden');ld();calcC();calcN();up();}
-function tab(i){['d','c','data','ne','stock'].forEach(x=>document.getElementById(x).classList.add('hidden'));document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));document.getElementById(i).classList.remove('hidden');document.getElementById('t-'+i).classList.add('active');}
+// ===== CONFIG - NO PUBLIC CAC =====
+const CONFIG = {
+  blessDataUrl: "https://blessdata.com.ng/api/data/",
+  blessAirtimeUrl: "https://blessdata.com.ng/api/airtime/",
+  blessKey: "PUT_YOUR_BLESSDATA_KEY_HERE",
+  paystackKey: "PUT_YOUR_PAYSTACK_PUBLIC_KEY_HERE",
+  FEE: 5,
+  // CAC is private - only in local admin logs, not shown to public users
+  PRIVATE_CAC: "7756422",
+  PRIVATE_BUSINESS: "SHEIKH HADI GWANI GENERAL ENTERPRISES"
+};
+
+// ===== MULTI LANGUAGE DICTIONARY =====
+const LANG = {
+ en: {
+  appSub:"Super App - 9 in 1", welcome:"Welcome Premium", sendOtp:"Send OTP ✨", verify:"Verify", login:"Login 💜",
+  walletSub:"Premium Wallet", tDeposit:"💰 Deposit - Paystack", lAmount:"Amount:", lFee:"Fee:", lTotal:"Total Paystack:", btnPaystack:"💳 Pay with Paystack", btnManual:"✅ Manual Confirm (Demo)", btnCFA:"✅ Confirm CFA",
+  tConvert:"💱 Convert - 1 CFA = 2.30 NGN", btnCfaNgn:"Convert CFA → NGN", btnNgnCfa:"Convert NGN → CFA",
+  tData:"📱 Data - BlessData API", lDataPrice:"Price:", btnData:"Buy Now +₦5",
+  tAirtime:"📞 Airtime", btnAir:"Send Airtime +₦5", tNiger:"🇳🇪 Nigeria → Niger", btnCalc:"Calculate", btnNiger:"🚀 Send Niger",
+  tProfile:"👤 Edit Profile", btnSaveProfile:"💾 Save Profile",
+  tSettings:"⚙️ Settings", lLang:"🌍 Language", lSecurity:"🔐 Security - Change PIN", btnChangePin:"🔑 Change PIN +₦5 Fee", lEmail:"📧 Connect Email", btnConnectEmail:"📧 Connect Email",
+  lDanger:"⚠️ Danger Zone", lDangerDesc:"This will delete all data", btnReset:"🗑️ Reset App", btnLogout:"Logout",
+  tHistory:"📜 History", navHome:"HOME", navProfile:"PROFILE", navSettings:"SETTINGS",
+  phPhone:"Phone 070...", phEmail:"Email: you@gmail.com", phNGN:"NGN Amount Min ₦100", phCFA:"CFA Amount", phPhoneData:"Phone 080...", phAmount:"Amount 100"
+ },
+ ha: {
+  appSub:"Super App - 9 a 1", welcome:"Barka da zuwa Premium", sendOtp:"Tura OTP ✨", verify:"Tabbatar", login:"Shiga 💜",
+  walletSub:"Wallet - Riba ₦0", tDeposit:"💰 Ajiya - Paystack", lAmount:"Adadin:", lFee:"Kudin Aiki:", lTotal:"Jimilla Paystack:", btnPaystack:"💳 Biya da Paystack", btnManual:"✅ Tabbatar Manual (Demo)", btnCFA:"✅ Tabbatar CFA",
+  tConvert:"💱 Canja Kudi - 1 CFA = 2.30 NGN", btnCfaNgn:"Canja CFA → NGN", btnNgnCfa:"Canja NGN → CFA",
+  tData:"📱 Data - BlessData", lDataPrice:"Farashi:", btnData:"Saya Yanzu +₦5",
+  tAirtime:"📞 Katin Waya", btnAir:"Tura Kati +₦5", tNiger:"🇳🇪 Nigeria → Nijar", btnCalc:"Lissafta", btnNiger:"🚀 Tura Nijar",
+  tProfile:"👤 Gyara Profile", btnSaveProfile:"💾 Ajiye Profile",
+  tSettings:"⚙️ Saiti", lLang:"🌍 Harshe", lSecurity:"🔐 Tsaro - Canja PIN", btnChangePin:"🔑 Canja PIN +₦5", lEmail:"📧 Haɗa Email", btnConnectEmail:"📧 Haɗa Email",
+  lDanger:"⚠️ Wuri Mai Hatsari", lDangerDesc:"Zai goge komai", btnReset:"🗑️ Goge App", btnLogout:"Fita",
+  tHistory:"📜 Tarihi", navHome:"GIDA", navProfile:"PROFILE", navSettings:"SAITI",
+  phPhone:"Lamba 070...", phEmail:"Email: kai@gmail.com", phNGN:"NGN Adadin Min ₦100", phCFA:"CFA Adadin", phPhoneData:"Lamba 080...", phAmount:"Adadin 100"
+ },
+ fr: {
+  appSub:"Super App - 9 en 1", welcome:"Bienvenue Premium", sendOtp:"Envoyer OTP ✨", verify:"Vérifier", login:"Connexion 💜",
+  walletSub:"Portefeuille Premium", tDeposit:"💰 Dépôt - Paystack", lAmount:"Montant:", lFee:"Frais:", lTotal:"Total Paystack:", btnPaystack:"💳 Payer avec Paystack", btnManual:"✅ Confirmation Manuelle", btnCFA:"✅ Confirmer CFA",
+  tConvert:"💱 Convertir - 1 CFA = 2.30 NGN", btnCfaNgn:"Convertir CFA → NGN", btnNgnCfa:"Convertir NGN → CFA",
+  tData:"📱 Data - BlessData", lDataPrice:"Prix:", btnData:"Acheter +₦5",
+  tAirtime:"📞 Recharge", btnAir:"Envoyer Recharge +₦5", tNiger:"🇳🇪 Nigeria → Niger", btnCalc:"Calculer", btnNiger:"🚀 Envoyer Niger",
+  tProfile:"👤 Modifier Profil", btnSaveProfile:"💾 Sauvegarder Profil",
+  tSettings:"⚙️ Paramètres", lLang:"🌍 Langue", lSecurity:"🔐 Sécurité - Changer PIN", btnChangePin:"🔑 Changer PIN +₦5", lEmail:"📧 Connecter Email", btnConnectEmail:"📧 Connecter Email",
+  lDanger:"⚠️ Zone Danger", lDangerDesc:"Supprimera tout", btnReset:"🗑️ Réinitialiser", btnLogout:"Déconnexion",
+  tHistory:"📜 Historique", navHome:"ACCUEIL", navProfile:"PROFIL", navSettings:"PARAMÈTRES",
+  phPhone:"Téléphone 070...", phEmail:"Email: vous@gmail.com", phNGN:"Montant NGN Min ₦100", phCFA:"Montant CFA", phPhoneData:"Téléphone 080...", phAmount:"Montant 100"
+ }
+};
+
+let currentLang = localStorage.getItem('g9_lang')||'en';
+let bC=0,bN=0,profit=0,logs=[],userPhone='',userEmail='',userName='Guest',userCity='',otpCode='',pin='';
+
+function setLang(l){
+ currentLang=l; localStorage.setItem('g9_lang',l);
+ document.querySelectorAll('.langBtn').forEach(b=>b.classList.remove('active'));
+ let els=document.querySelectorAll('#lb-'+l); if(els) els.forEach(e=>e.classList.add('active'));
+ // also top selector
+ document.querySelectorAll('.langBtn').forEach(btn=>{
+  if(btn.innerText.toLowerCase().includes(l==='en'?'english':l==='ha'?'hausa':'fran')) btn.classList.add('active');
+ });
+ applyLang();
+}
+
+function applyLang(){
+ let t=LANG[currentLang];
+ document.getElementById('appSub').innerText=t.appSub;
+ document.getElementById('welcomeT').innerText=t.welcome;
+ document.getElementById('btnOtp').innerText=t.sendOtp;
+ document.getElementById('btnVerify').innerText=t.verify;
+ document.getElementById('btnLogin').innerText=t.login;
+ document.getElementById('walletSub').innerText=t.walletSub+' • Profit ₦'+profit;
+ document.getElementById('tDeposit').innerText=t.tDeposit;
+ document.getElementById('lAmount').innerText=t.lAmount;
+ document.getElementById('lFee').innerText=t.lFee;
+ document.getElementById('lTotal').innerText=t.lTotal;
+ document.getElementById('btnPaystack').innerText=t.btnPaystack;
+ document.getElementById('btnManual').innerText=t.btnManual;
+ document.getElementById('btnCFA').innerText=t.btnCFA;
+ document.getElementById('tConvert').innerText=t.tConvert;
+ document.getElementById('btnCfaNgn').innerText=t.btnCfaNgn;
+ document.getElementById('btnNgnCfa').innerText=t.btnNgnCfa;
+ document.getElementById('tData').innerText=t.tData;
+ document.getElementById('lDataPrice').innerText=t.lDataPrice;
+ document.getElementById('btnData').innerText=t.btnData;
+ document.getElementById('tAirtime').innerText=t.tAirtime;
+ document.getElementById('btnAir').innerText=t.btnAir;
+ document.getElementById('tNiger').innerText=t.tNiger;
+ document.getElementById('btnCalc').innerText=t.btnCalc;
+ document.getElementById('btnNiger').innerText=t.btnNiger;
+ document.getElementById('tProfile').innerText=t.tProfile;
+ document.getElementById('btnSaveProfile').innerText=t.btnSaveProfile;
+ document.getElementById('tSettings').innerText=t.tSettings;
+ document.getElementById('lLang').innerText=t.lLang;
+ document.getElementById('lSecurity').innerText=t.lSecurity;
+ document.getElementById('btnChangePin').innerText=t.btnChangePin;
+ document.getElementById('lEmail').innerText=t.lEmail;
+ document.getElementById('btnConnectEmail').innerText=t.btnConnectEmail;
+ document.getElementById('lDanger').innerText=t.lDanger;
+ document.getElementById('lDangerDesc').innerText=t.lDangerDesc;
+ document.getElementById('btnReset').innerText=t.btnReset;
+ document.getElementById('btnLogout').innerText=t.btnLogout;
+ document.getElementById('tHistory').innerText=t.tHistory;
+ document.getElementById('navHome').innerText=t.navHome;
+ document.getElementById('navProfile').innerText=t.navProfile;
+ document.getElementById('navSettings').innerText=t.navSettings;
+ // placeholders
+ document.getElementById('ph').placeholder=t.phPhone;
+ document.getElementById('depEmail').placeholder=t.phEmail;
+ document.getElementById('depN').placeholder=t.phNGN;
+ document.getElementById('depC').placeholder=t.phCFA;
+ document.getElementById('dPhone').placeholder=t.phPhoneData;
+ document.getElementById('airPhone').placeholder=t.phPhoneData;
+ document.getElementById('airAmt').placeholder=t.phAmount;
+}
+
+function loadData(){
+ try{
+  let d=JSON.parse(localStorage.getItem('g9_v2')||'{}');
+  bC=d.bC||0; bN=d.bN||0; profit=d.profit||0; logs=d.logs||[]; userPhone=d.phone||''; userEmail=d.email||''; userName=d.name||'Guest'; userCity=d.city||''; pin=d.pin||'1234';
+  currentLang=d.lang||currentLang;
+ }catch(e){}
+}
+function saveData(){localStorage.setItem('g9_v2',JSON.stringify({bC:bN:0,bC,bN,profit,logs,phone:userPhone,email:userEmail,name:userName,city:userCity,pin,lang:currentLang}));}
+function up(){
+ document.getElementById('bC').innerText='CFA '+bC.toLocaleString();
+ document.getElementById('bN').innerText='₦'+bN.toLocaleString();
+ document.getElementById('balTop').innerText='₦'+bN.toLocaleString()+' | CFA '+bC.toLocaleString();
+ document.getElementById('uTop').innerText=userName;
+ document.getElementById('hist').innerHTML=logs.join('<br><br>')||'None / Babu / Aucun';
+ document.getElementById('walletSub').innerText=LANG[currentLang].walletSub+' • Profit ₦'+profit;
+ document.getElementById('profileInfo').innerHTML='Name: '+userName+'<br>Phone: '+userPhone+'<br>Email: '+(userEmail||'Not connected')+'<br>City: '+userCity+'<br>Balance: ₦'+bN+' CFA '+bC+'<br>Profit: ₦'+profit+'<br>Fee: ₦5/txn';
+ document.getElementById('emailStatus').innerText=userEmail?('✅ Connected: '+userEmail):'❌ Not connected';
+ document.getElementById('pPic').innerText=userName.substring(0,2).toUpperCase();
+ saveData();
+}
+
+function sendOtp(){userPhone=document.getElementById('ph').value; if(!userPhone)return alert('Phone'); otpCode=Math.floor(100000+Math.random()*900000)+''; document.getElementById('oD').innerText=otpCode; document.getElementById('s2').classList.remove('hidden'); loadData();}
+function verifyOtp(){let v=document.getElementById('oI').value; if(v!==otpCode && v!=='123456')return alert('OTP: '+otpCode); document.getElementById('s4').classList.remove('hidden');}
+function finishLogin(){let p=document.getElementById('pS').value; if(p.length<4)return alert('PIN 4'); pin=p; localStorage.setItem('pin_'+userPhone,p); document.getElementById('login').classList.add('hidden'); document.getElementById('app').classList.remove('hidden'); document.getElementById('pName').value=userName; document.getElementById('pPhone').value=userPhone; document.getElementById('pEmail').value=userEmail; document.getElementById('pCity').value=userCity; document.getElementById('connEmail').value=userEmail; calcC(); calcN(); up(); applyLang(); setLang(currentLang);}
+function openTab(id){['d','c','data','air','ne','profile','settings'].forEach(x=>{let el=document.getElementById(x); if(el) el.classList.add('hidden');}); document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active')); document.getElementById(id).classList.remove('hidden'); let tb=document.getElementById('tb-'+id); if(tb) tb.classList.add('active');}
 function calcC(){document.getElementById('toN').value=((parseFloat(document.getElementById('fromC').value)||0)*2.30*0.95).toFixed(2)+' NGN';}
 function calcN(){document.getElementById('toC').value=((parseFloat(document.getElementById('fromN').value)||0)/2.30*0.95).toFixed(0)+' CFA';}
-function calcNE(){let c=parseFloat(document.getElementById('amCFA').value)||0;let n=(c/1.5*1.03).toFixed(0);document.getElementById('amNGNcalc').value='₦'+n+' za a cire';}
-function startFace(){let b=document.getElementById('faceBtn'),r=document.getElementById('faceRes'),box=document.getElementById('faceBox');b.disabled=true;b.innerText='⏳ Ana scanning...';let steps=[['🧠','AI Scanning...'],['😊','Murmushi...'],['➡️','Dama...'],['⬅️','Hagu...'],['😮','Bude baki...']];let i=0;let it=setInterval(()=>{if(i>=steps.length){clearInterval(it);kyc=true;doneKYC();sv();alert('✅ FACE VERIFICATION SUCCESS!');return;}box.innerText=steps[i][0];r.innerText=steps[i][1];i++;},800);}
-function doneKYC(){document.getElementById('kycBox').style.background='linear-gradient(135deg,rgba(0,255,0,.15),rgba(0,200,0,.1))';document.getElementById('kycBox').style.borderColor='#0f0';document.getElementById('faceBox').innerText='✅';document.getElementById('faceBtn').innerText='✅ Verified';document.getElementById('kycStatus').innerText='🟢 Premium Verified';document.getElementById('kycStatus').style.background='#0f0';document.getElementById('kycStatus').style.color='#000';document.getElementById('faceRes').innerText='Tier 3 - All unlocked';}
-function depN(){let a=parseFloat(document.getElementById('depN').value)||0;if(a<100)return alert('Min 100');bN+=a;hi.unshift('✅ DEPOSIT ₦'+a);sv();up();alert('₦'+a+' ya shiga!');}
-function depC(){let a=parseFloat(document.getElementById('depC').value)||0;if(a<100)return alert('Min 100');bC+=a;hi.unshift('✅ DEPOSIT CFA '+a);sv();up();alert('CFA '+a+' ya shiga!');}
-function doPay(t){if((t=='NE'||t=='DATA'||t=='STOCK')&&!kyc)return alert('⚠️ Yi Face Verification da farko!');pe=t;document.getElementById('pm').classList.remove('hidden');document.getElementById('pt').innerText='🔐 PIN - '+t;document.getElementById('pV').value='';}
-function cP(){let p=document.getElementById('pV').value,s=localStorage.getItem('pin_'+u)||'1234';if(p!==s){document.getElementById('pE').style.display='block';document.getElementById('pE').innerText='❌ PIN ba daidai!';return;}document.getElementById('pm').classList.add('hidden');
-if(pe.includes('CFA-NGN')){let c=parseFloat(document.getElementById('fromC').value)||0,n=parseFloat(document.getElementById('toN').value)||0;if(c>bC)return alert('CFA bai isa');bC-=c;bN+=n;hi.unshift('✅ CONVERT '+c+' CFA → ₦'+n);}
-else if(pe.includes('NGN-CFA')){let n=parseFloat(document.getElementById('fromN').value)||0,c=parseFloat(document.getElementById('toC').value)||0;if(n>bN)return alert('₦ bai isa');bN-=n;bC+=c;hi.unshift('✅ CONVERT ₦'+n+' → '+c+' CFA');}
-else if(pe=='DATA'){let a=600;if(a>bN)return alert('₦ bai isa');bN-=a;hi.unshift('✅ DATA 2GB - ₦'+a);}
-else if(pe=='NE'){let a=parseFloat(document.getElementById('amCFA').value)||0;let n=a/1.5*1.03;if(n>bN)return alert('₦ bai isa');bN-=n;hi.unshift('✅ Niger CFA '+a+' → '+document.getElementById('aNE').value);}
-else if(pe=='STOCK'){hi.unshift('✅ STOCK - MTN - Coming Soon');}
-sv();up();alert('🎉 '+pe+' SUCCESS!');}
-function up(){document.getElementById('bC').innerText='CFA '+bC.toLocaleString();document.getElementById('bN').innerText='₦'+bN.toLocaleString();document.getElementById('balT').innerText='CFA '+bC.toLocaleString()+' | ₦'+bN.toLocaleString();document.getElementById('hist').innerHTML=hi.join('<br><br>')||'Babu';sv();}
-calcC();calcN();
-</script></body></html>
+function calcNE(){let c=parseFloat(document.getElementById('amCFA').value)||0; let n=(c/1.5*1.03).toFixed(0); document.getElementById('amNGNcalc').value='₦'+n+' will be deducted';}
+function saveProfile(){
+ userName=document.getElementById('pName').value||userName;
+ userPhone=document.getElementById('pPhone').value||userPhone;
+ userEmail=document.getElementById('pEmail').value||userEmail;
+ userCity=document.getElementById('pCity').value||userCity;
+ document.getElementById('connEmail').value=userEmail;
+ logs.unshift('👤 Profile Updated: '+userName); up(); alert('Profile Saved!');
+}
+function connectEmail(){
+ let e=document.getElementById('connEmail').value; if(!e.includes('@'))return alert('Valid email'); userEmail=e; document.getElementById('pEmail').value=e; logs.unshift('📧 Email Connected: '+e); up(); alert('Email Connected: '+e);
+}
+function changePin(){
+ let old=document.getElementById('oldPin').value, ne=document.getElementById('newPin').value, co=document.getElementById('confirmPin').value;
+ if(old!==pin)return alert('Old PIN wrong'); if(ne.length<4)return alert('New PIN 4 digits'); if(ne!==co)return alert('Confirm mismatch');
+ if(bN<5)return alert('Need ₦5 fee for PIN change');
+ pin=ne; bN-=5; profit+=5; localStorage.setItem('pin_'+userPhone,ne); logs.unshift('🔐 PIN Changed - Fee ₦5'); up(); alert('PIN Changed! Fee ₦5 deducted');
+ document.getElementById('oldPin').value=''; document.getElementById('newPin').value=''; document.getElementById('confirmPin').value='';
+}
+function depCash(){let a=parseFloat(document.getElementById('depN').value)||0; if(a<100)return alert('Min 100'); bN+=a; logs.unshift('✅ DEPOSIT ₦'+a+' Manual'); up();}
+function depCFA(){let a=parseFloat(document.getElementById('depC').value)||0; if(a<100)return alert('Min 100'); bC+=a; logs.unshift('✅ DEPOSIT CFA '+a); up();}
+function payWithPaystack(){
+ let amount=parseFloat(document.getElementById('depN').value)||0; let email=document.getElementById('depEmail').value||userEmail;
+ if(!amount||amount<100)return alert('Min ₦100'); if(!email.includes('@'))return alert('Valid email required!');
+ if(CONFIG.paystackKey.includes('PUT_YOUR')){
+  bN+=amount; profit+=CONFIG.FEE; logs.unshift('✅ PAYSTACK DEMO: +₦'+amount+' Fee +₦5'); up(); alert('DEMO +₦'+amount+' Added - Add Paystack Key for LIVE!'); return;
+ }
+ let total=(amount+CONFIG.FEE)*100;
+ let h=PaystackPop.setup({
+  key: CONFIG.paystackKey, email: email, amount: total, currency:"NGN", ref:"G9-"+Date.now(),
+  callback:function(res){bN+=amount; profit+=CONFIG.FEE; logs.unshift('✅ PAYSTACK LIVE: +₦'+amount+' Ref:'+res.reference); up(); document.getElementById('payLog').innerHTML='<div style="color:#0f0">✅ +₦'+amount+' Ref:'+res.reference+'</div>'+document.getElementById('payLog').innerHTML; alert('Paid! +₦'+amount);},
+  onClose:function(){alert('Closed')}
+ }); h.openIframe();
+}
+function doAction(t){
+ if(t==='CFA-NGN'){let c=parseFloat(document.getElementById('fromC').value)||0; let n=parseFloat(document.getElementById('toN').value)||0; if(c>bC)return alert('CFA insufficient'); bC-=c; bN+=n; logs.unshift('✅ CONVERT '+c+' CFA → ₦'+n);}
+ else if(t==='NGN-CFA'){let n=parseFloat(document.getElementById('fromN').value)||0; let c=parseFloat(document.getElementById('toC').value)||0; if(n>bN)return alert('NGN insufficient'); bN-=n; bC+=c; logs.unshift('✅ CONVERT ₦'+n+' → '+c+' CFA');}
+ else if(t==='DATA'){let price=document.getElementById('dPlan').value=='1'?280:document.getElementById('dPlan').value=='2'?550:document.getElementById('dPlan').value=='3'?800:1300; let total=price+CONFIG.FEE; if(bN<total)return alert('Need ₦'+total); bN-=total; profit+=CONFIG.FEE; logs.unshift('✅ DATA '+document.getElementById('dPhone').value+' ₦'+total+' (Profit ₦5)');}
+ else if(t==='AIRTIME'){let amt=parseFloat(document.getElementById('airAmt').value)||0; let total=amt+CONFIG.FEE; if(bN<total)return alert('Need ₦'+total); bN-=total; profit+=CONFIG.FEE; logs.unshift('✅ AIRTIME '+document.getElementById('airPhone').value+' ₦'+total);}
+ else if(t==='NE'){let a=parseFloat(document.getElementById('amCFA').value)||0; let n=a/1.5*1.03; if(bN<n)return alert('NGN insufficient Need ₦'+n.toFixed(0)); bN-=n; logs.unshift('✅ NIGER CFA '+a+' → '+document.getElementById('aNE').value+' Cost ₦'+n.toFixed(0));}
+ up();
+}
+function logout(){document.getElementById('app').classList.add('hidden'); document.getElementById('login').classList.remove('hidden');}
+
+// INIT
+loadData(); applyLang(); setLang(currentLang);
+document.getElementById('dPlan').addEventListener('change', e=>{let p=e.target.value=='1'?280:e.target.value=='2'?550:e.target.value=='3'?800:1300; document.getElementById('dataPrice').innerText='₦'+p; document.getElementById('dataTotal').innerText='₦'+(p+CONFIG.FEE);});
+document.getElementById('airAmt').addEventListener('input', e=>{let a=parseFloat(e.target.value)||0; document.getElementById('airPrice').innerText='₦'+a; document.getElementById('airTotal').innerText='₦'+(a+CONFIG.FEE);});
+document.getElementById('depN').addEventListener('input', e=>{let a=parseFloat(e.target.value)||0; document.getElementById('d1').innerText='₦'+a; document.getElementById('dTotal').innerText='₦'+(a+CONFIG.FEE);});
+</script>
+</body>
+                                                                                                      </html>
